@@ -1,20 +1,34 @@
-db = [
-    {'src': './static/img/blythe_white.jpg',
-     'about': 'Standard white shoe mold for Blythe dolls. Use for the production of boots.',
-     'size': ' • Size - 2.5 cm.',
-     'price': '• Price - 2 € without delivery.',
-     'link': "https://www.instagram.com/p/CLEzKxmDSnw/?utm_source=ig_web_copy_link"
-     },
+import sqlite3
+from os import path
 
-    {'src': './static/img/paola_white.jpg',
-     'about': 'Standard white shoe mold for Blythe dolls. Use for the production of boots.',
-     'size': ' • Size - 2.5 cm.',
-     'price': '• Price - 2 € without delivery.',
-     'link': "https://www.instagram.com/p/CLw_tSyD1FZ/?utm_source=ig_web_copy_link"},
+ROOT = path.dirname(path.realpath(__file__))
 
-    {'src': './static/img/handmade_green.jpeg',
-     'about': 'Standard green shoe mold for Handmade dolls. Use for the production of boots.',
-     'size': ' • Size - 2.5 cm. - 10 cm.',
-     'price': '• Price - 2.5 € - 17 € without delivery.',
-     'link': "https://www.instagram.com/p/CK7UEkGDZgQ/?utm_source=ig_web_copy_link"}
-]
+
+# Достаем данные из бд
+def get_all():
+    products_web = sqlite3.connect(path.join(ROOT, 'product.db'))
+    return products_web.execute("SELECT * FROM products;")
+
+
+# # Создание таблицы
+# conn = sqlite3.connect('product.db')
+# cur = conn.cursor()
+# cur.execute("""CREATE TABLE IF NOT EXISTS products(
+#    src TEXT,
+#    about TEXT,
+#    size TEXT,
+#    price TEXT,
+#    link TEXT);
+# """)
+#
+# # Запись данных существующих данных в дб
+# for i in db:
+#     to_db = [i['src'], i['about'], i['size'], i['price'], i['link']]
+#     cur.execute("INSERT INTO products VALUES(?, ?, ?, ?, ?);", to_db)
+#     to_db.clear()
+#
+# conn.commit()
+
+# Ввод данных в бд
+# ___Дописать___
+
