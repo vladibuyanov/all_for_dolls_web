@@ -1,8 +1,12 @@
 from flask import Flask, render_template
+# from flask_sqlalchemy import SQLAlchemy
 from db_work import get_all
 
 
 app = Flask(__name__)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///shop.db '
+# db = SQLAlchemy
+
 
 products = []
 
@@ -31,7 +35,7 @@ def index_test():
             'price': product[3],
             'link': product[4]
         })
-    return render_template('index.html', db=products)
+    return render_template('test.html', db=products)
 
 
 if __name__ == '__main__':
