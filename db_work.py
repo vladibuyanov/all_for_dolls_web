@@ -3,12 +3,16 @@ from os import path
 
 ROOT = path.dirname(path.realpath(__file__))
 
+products = []
+
 
 # Достаем данные из бд
 def get_all():
-    products_web = sqlite3.connect(path.join(ROOT, 'product.db'))
-    return products_web.execute("SELECT * FROM products;")
-
+    for product in sqlite3.connect(path.join(ROOT, 'product.db')).execute("SELECT * FROM products;"):
+        products.append({'src': product[0], 'about': product[1],
+                         'size': product[2], 'price': product[3],
+                         'link': product[4]})
+    return products
 
 # # Создание таблицы
 # conn = sqlite3.connect('product.db')
@@ -28,6 +32,3 @@ def get_all():
 #     to_db.clear()
 #
 # conn.commit()
-
-# Ввод данных в бд
-# ___Дописать___
