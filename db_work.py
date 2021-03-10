@@ -14,7 +14,6 @@ def get_all():
                          'link': product[4]})
     return products
 
-print(get_all())
 # # Создание таблицы
 # conn = sqlite3.connect('product.db')
 # cur = conn.cursor()
